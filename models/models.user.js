@@ -18,18 +18,22 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['user', 'manager'],
-    default: 'user',
+    enum: ['buyer', 'manager','seller'],
+    default: 'buyer',
   },
   city: {
     type: String,
     required: true,
     trim: true,
+  },
+  photo: {
+    type: String,
+    default: 'https://example.com/default-profile.png', // Placeholder URL for profile photo
   }
-//   isVerified: {
-//     type: Boolean,
-//     default: false,
-//   }
+  // isVerified: {
+  //   type: Boolean,
+  //   default: false,
+  // }
 }, {
   timestamps: true // This adds createdAt and updatedAt automatically
 });
