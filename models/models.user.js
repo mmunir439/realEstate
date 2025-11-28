@@ -12,6 +12,13 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     trim: true,
   },
+  phone: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true,
+  },
   password: {
     type: String,
     required: true,
@@ -29,7 +36,10 @@ const userSchema = new mongoose.Schema({
   photo: {
     type: String,
     default: 'https://example.com/default-profile.png', // Placeholder URL for profile photo
-  }
+  },
+  resetPasswordToken: { type: String },
+resetPasswordExpire: { type: Date },
+
   // isVerified: {
   //   type: Boolean,
   //   default: false,

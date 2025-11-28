@@ -8,4 +8,6 @@ const upload = multer({ dest: 'uploads/' }); // You can configure storage as nee
 // Route to register user with file upload
 router.post("/register", upload.single("photo"), userController.registerUser);
 router.post("/login", userController.loginUser);
+router.post("/forgot-password", userController.forgotPassword);
+router.put("/reset-password/:token", userController.resetPassword);
 module.exports = router;
