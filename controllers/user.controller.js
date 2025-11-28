@@ -16,7 +16,7 @@ const userExistsPhone = await User.findOne({ phone });
 let errors = [];
 
 if (userExists) errors.push("Email already exists");
-if (userExistsPhone) errors.push("Phone already exists");
+if (userExistsPhone) errors.push("Phone already exists ");
 
 if (errors.length > 0) {
   return res.status(400).json({ message: errors.join(" & ") });
