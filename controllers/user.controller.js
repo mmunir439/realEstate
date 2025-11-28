@@ -1,6 +1,8 @@
 const User = require("../models/models.user.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const transporter = require("../config/mailer.js"); // adjust the path
+
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 
@@ -26,13 +28,6 @@ if (errors.length > 0) {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ name, email, password: hashedPassword, role, phone, city, photo: photoToSave });
     const savedUser = await user.save();
-
-    // Send welcome email
-    const transporter = nodemailer.createTransport({
-      service: "Gmail",
-      auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
-    });
-
     await transporter.sendMail({
       from: `"JHRealEstate" <${process.env.EMAIL_USER}>`,
       to: savedUser.email,

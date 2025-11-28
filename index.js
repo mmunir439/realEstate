@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const cors=require("cors");
 const connectDB = require("./config/db.js");
 const userRoutes = require('./routes/user.routes.js');
+const callBack = require('./routes/callback.route.js');
 const app = express()
 dotenv.config();
 // Connect Database
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 })
 // Use Routes
 app.use('/users', userRoutes);
+app.use('/callback', callBack);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
